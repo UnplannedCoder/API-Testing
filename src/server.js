@@ -17,27 +17,31 @@ mongoose
 const productSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   price: {
     type: Number,
-    required: true
+    required: true,
   },
   category: {
     type: String,
-    required: true
+    required: true,
   },
   stock: {
     type: Number,
-    default: 0
-  }
+    default: 0,
+  },
 });
 
 const Product = mongoose.model("Product", productSchema);
 
 // HOME ROUTE
 app.get("/", (req, res) => {
-  res.send("Welcome to Node.js CRUD Application- version B");
+  app.get("/", (req, res) => {
+    res.send(
+      "Welcome to Node.js CRUD Application - Conflict Resolved Successfully",
+    );
+  });
 });
 
 // CREATE - Add a Product
@@ -47,7 +51,7 @@ app.post("/products", async (req, res) => {
 
     res.status(201).json({
       message: "Product Added Successfully",
-      product
+      product,
     });
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -72,7 +76,7 @@ app.get("/products/:id", async (req, res) => {
 
     if (!product) {
       return res.status(404).json({
-        message: "Product Not Found"
+        message: "Product Not Found",
       });
     }
 
@@ -85,21 +89,20 @@ app.get("/products/:id", async (req, res) => {
 // UPDATE - Update a Product
 app.put("/products/:id", async (req, res) => {
   try {
-    const product = await Product.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
 
     if (!product) {
       return res.status(404).json({
-        message: "Product Not Found"
+        message: "Product Not Found",
       });
     }
 
     res.status(200).json({
       message: "Product Updated Successfully",
-      product
+      product,
     });
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -109,19 +112,17 @@ app.put("/products/:id", async (req, res) => {
 // DELETE - Delete a Product
 app.delete("/products/:id", async (req, res) => {
   try {
-    const product = await Product.findByIdAndDelete(
-      req.params.id
-    );
+    const product = await Product.findByIdAndDelete(req.params.id);
 
     if (!product) {
       return res.status(404).json({
-        message: "Product Not Found now"
+        message: "Product Not Found now",
       });
     }
 
     res.status(200).json({
-      message: "Product Deleted Successfully",
-      product
+      message: "Product Deleted Successfully now",
+      product,
     });
   } catch (err) {
     res.status(400).json({ error: "Invalid Product ID" });
