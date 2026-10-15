@@ -37,7 +37,7 @@ const Product = mongoose.model("Product", productSchema);
 
 // HOME ROUTE
 app.get("/", (req, res) => {
-  res.send("Welcome to Node.js CRUD Application");
+  res.send("Welcome to Node.js CRUD Application - Version A");
 });
 
 // CREATE - Add a Product
