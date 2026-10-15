@@ -1,0 +1,19 @@
+{
+  "name": "three-api-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A small Node.js app with three JSON APIs",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "mongoose": "^9.11.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
